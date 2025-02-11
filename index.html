@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style>
+        body {
+            text-align: center;
+            background: url('fondo2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: relative;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: transparent;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0);
+        }
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffccd5;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(255, 0, 102, 0.7);
+            font-family: 'Cursive', sans-serif;
+        }
+        .image {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .yes {
+            background-color: #28a745;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .no {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+    <script>
+        var messages = ["¿Segura amorcito ❤️❤️❤️?", "¿Estás completamente segura amorcito❤️❤️❤️?", "Piénsalo bien amorcito❤️❤️❤️", "Última oportunidad amorcito ❤️❤️❤️", "¿De verdad no? 😢"];
+        var images = ["image1.png", "image2.jpg", "image3.jpg", "image4.gif", "image5.gif","image6.gif"];
+        var index = 0;
+
+        function enlargeYesButton() {
+            var yesButton = document.querySelector('.yes');
+            var currentSize = window.getComputedStyle(yesButton).fontSize;
+            var newSize = parseFloat(currentSize) * 1.2 + "px";
+            yesButton.style.fontSize = newSize;
+            yesButton.style.padding = "" + (parseFloat(yesButton.style.padding) * 1.7 || 14) + "px " + (parseFloat(yesButton.style.padding) * 1.7 || 24) + "px";
+        }
+
+        function changeNoButtonText() {
+            var noButton = document.querySelector('.no');
+            if (index < messages.length) {
+                noButton.innerText = messages[index];
+            } else {
+                noButton.innerText = "No puedes escapar de mi amorcito❤️❤️❤️";
+            }
+        }
+
+        function changeImage() {
+            var imageElement = document.querySelector('.image');
+            if (index < images.length) {
+                imageElement.src = images[index];
+            }
+            index++;
+        }
+
+        function handleClick() {
+            enlargeYesButton();
+            changeNoButtonText();
+            changeImage();
+        }
+
+        function goToPage() {
+            window.location.href = "aceptado.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="title"> 
+        <h1 class="text-white font-bold text-5xl text-center">💖 ¿Quieres ser mi San Valentín? 💖</h1>
+    </div>
+    <div class="container">
+        <img src="principal.png" alt="San Valentín" class="image">
+        <div class="buttons">
+            <button class="btn yes" onclick="goToPage()">Sí</button>
+            <button class="btn no" onclick="handleClick()">No</button>
+        </div>
+    </div>
+</body>
+</html>
